@@ -14,5 +14,20 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}));
 app.use(express.static("public"))
 app.use(cookieParser())
 
+// routes import
+import userRouter from './routes/user.routes.js';
+
+
+// Add a simple route to check if the server is running
+app.get('/test', (req, res) => {
+    res.send('Server is running');
+});
+
+
+
+//routes declaration
+app.use('/api/v1/users', userRouter)
+//http://localhost:8000/api/v1/users/register
+
 
 export { app }
